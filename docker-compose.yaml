@@ -1,8 +1,11 @@
-version: "3.9"
+version: "3.6"
 services:
   web:
     build: .
     ports:
       - "5000:5000"
   redis:
-    image: "redis:alpine"
+    image: "redis:alpine" 
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - ./redisdata:/data
